@@ -1,0 +1,37 @@
+openapi: 3.0.0
+info:
+  title: EMV Processor API
+  description: API para processamento de transações EMV
+  version: 1.0.0
+
+paths:
+  /transactions:
+    post:
+      summary: Processa uma transação EMV
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tlv:
+                  type: string
+                  example: "5A08476173900123456F24032512319F34031F0302"
+      responses:
+        "200":
+          description: Transação processada com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: APPROVED
+                  pan:
+                    type: string
+                    example: "4532015112830366"
+                  createdAt:
+                    type: string
+                    format: date-time

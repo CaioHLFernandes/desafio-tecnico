@@ -141,7 +141,31 @@ emv-processor/
 - Exposição do processamento via API REST
 
 ---
+## 🌐 Endpoint HTTP – Processamento de Transações
 
+O projeto expõe um endpoint REST para receber dados EMV em formato TLV e processar a transação.
+### Executar servidor HTTP
+```bash
+go run cmd/app/main.go
+```
+### Endpoint
+POST /transactions
+
+### Request
+```json
+{
+  "tlv": "5A08476173900123456F24032512319F34031F0302"
+}
+```
+### Response
+```json
+{
+  "status": "APPROVED",
+  "pan": "4532015112830366",
+  "createdAt": "2025-12-15T14:32:00Z"
+}
+```
+---
 ## ✅ Considerações Finais
 Este projeto foi desenvolvido com foco em **qualidade de código, organização e aderência a boas práticas**, simulando de forma simples um fluxo real de processamento EMV.
 
